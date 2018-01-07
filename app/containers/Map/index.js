@@ -7,12 +7,18 @@ export default function Map() {
   const projection = geoMercator();
   const pathGenerator = geoPath().projection(projection);
   const features = feature(topoJSON, topoJSON.objects.countries).features;
+  const pathStyles = {
+    fill: 'white',
+    stroke: 'black',
+    strokeWidth: 0.5
+  };
 
   const countries = features.map((feature, index) =>
     (<path
       key={`path${index}`}
       d={pathGenerator(feature)}
       className='countries'
+      style={pathStyles}
     />)
   );
 
