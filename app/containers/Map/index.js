@@ -1,7 +1,8 @@
 import React from 'react';
 import { geoMercator, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
-import topoJSON from '../../data/HKG_adm';
+import topoJSON from '../../data/hong-kong.topo';
+import Marker from '../Marker';
 
 export default function Map() {
   const width = 700;
@@ -27,6 +28,7 @@ export default function Map() {
   return (
     <svg width={width} height={height}>
       {countries}
+      <Marker />
     </svg>
   );
 }
