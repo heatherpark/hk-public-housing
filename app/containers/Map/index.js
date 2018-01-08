@@ -1,12 +1,14 @@
 import React from 'react';
 import { geoMercator, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
-import topoJSON from '../../data/world-map';
+import topoJSON from '../../data/HKG_adm';
 
 export default function Map() {
-  const projection = geoMercator();
+  const width = 700;
+  const height = 580;
+  const projection = geoMercator().rotate([-114.1095, -22.3964]).scale(70000).translate([width / 2, height / 2]);
   const pathGenerator = geoPath().projection(projection);
-  const features = feature(topoJSON, topoJSON.objects.countries).features;
+  const features = feature(topoJSON, topoJSON.objects['hong-kong']).features;
   const pathStyles = {
     fill: 'white',
     stroke: 'black',
@@ -23,7 +25,7 @@ export default function Map() {
   );
 
   return (
-    <svg width={10000} height={1000}>
+    <svg width={width} height={height}>
       {countries}
     </svg>
   );
