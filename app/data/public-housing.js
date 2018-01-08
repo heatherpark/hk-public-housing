@@ -1,4 +1,4 @@
-[ 
+export default [ 
   {
   "Estate Name" : {
     "en" : "Tak Long Estate",
