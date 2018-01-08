@@ -3,7 +3,7 @@
  * each key's value is an alternative, more JS-friendly key name
  */
 
-var estateKeys = {
+export default {
   'Estate Name': 'estateName',
   'District Name': 'districtName',
   'Region Name': 'regionName',
