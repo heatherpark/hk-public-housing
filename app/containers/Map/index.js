@@ -9,14 +9,23 @@ export default function Map(props) {
       key={`path${index}`}
       d={pathGenerator(feature)}
       className='country'
-      style={props.pathStyles}
+      style={props.countryStyles}
     />)
   );
+  const markers = props.markerData &&
+    props.markerData.map(data => {
+      return (
+        <Marker
+          data={data}
+          projection={props.projection}
+          styles={props.markerStyles} />
+      );
+    });
 
   return (
     <svg width={props.width} height={props.height}>
       {countries}
-      {/* <Marker /> */}
+      {props.markerData && markers}
     </svg>
   );
 }
