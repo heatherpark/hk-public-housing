@@ -1,14 +1,11 @@
-/**
- *
- * Marker
- *
- */
-
 import React from 'react';
 import './Marker.css';
 
-function Marker(props) {
-  const coordinates = [props.data.longitude, props.data.latitude];
+export default function Marker(props) {
+  const coordinates = [
+    props.data.longitude, 
+    props.data.latitude
+  ];
 
   return (
     <circle
@@ -20,5 +17,3 @@ function Marker(props) {
       r={props.radius} />
   );
 }
-
-export default Marker;
