@@ -12,22 +12,21 @@ import topoJSON from '../../data/hong-kong.topo';
 import markerData from '../../data/public-housing-marker-data';
 
 export default function MapContainer() {
-  const mapWidth = 800;
-  const mapHeight = 680;
+  const mapWidth = window.innerWidth;
+  const mapHeight = window.innerHeight;
   const projection = geoMercator()
-    .rotate([-114.1095, -22.3964])
-    .scale(70000)
+    .center([114.1095, 22.3964])
+    .scale(100000)
     .translate([mapWidth / 2, mapHeight / 2]);
   const topoJSONFeatures = feature(topoJSON, topoJSON.objects['hong-kong']).features;
   const countryStyles = {
-    fill: 'white',
-    stroke: 'black',
+    stroke: '#FFF',
     strokeWidth: 0.5
   };
   const markerStyles = {
-    fill: 'black',
-    stroke: 'black',
-    r: 1
+    fill: '#800000',
+    stroke: '#FFF',
+    r: 6
   };
 
   return (
