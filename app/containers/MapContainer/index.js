@@ -26,7 +26,8 @@ export default function MapContainer() {
   const markerStyles = {
     fill: '#800000',
     stroke: '#FFF',
-    r: 6
+    r: 10,
+    opacity: .5
   };
 
   return (

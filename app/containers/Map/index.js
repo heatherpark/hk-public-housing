@@ -18,15 +18,21 @@ export default class Map extends React.Component {
   }
 
   handleMarkerMouseEnter(event, data) {
-    this.setState({ 
-      showTooltip: true,
-      tooltipData: data,
-      hoverPosition: [event.clientX, event.clientY]
-    });
+    event.persist();
+
+    setTimeout(() => {
+      this.setState({ 
+        showTooltip: true,
+        tooltipData: data,
+        hoverPosition: [event.clientX, event.clientY]
+      });
+    }, 300);
   }
 
   handleMarkerMouseLeave(event) {
-    // this.setState({ showTooltip: false });
+    setTimeout(() => {
+      this.setState({ showTooltip: false });
+    }, 300);
   }
 
   render() {

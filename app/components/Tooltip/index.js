@@ -12,7 +12,10 @@ function Tooltip(props) {
     display: 'inline-block',
     position: 'absolute',
     top: props.position[1],
-    left: props.position[0]
+    left: props.position[0],
+    fontFamily: 'Anonymous Pro',
+    backgroundColor: '#FFF',
+    fontSize: '10px'
   };
   const { data } = props;
 

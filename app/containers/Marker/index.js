@@ -13,8 +13,8 @@ function Marker(props) {
   return (
     <svg>
       <circle
-        onMouseEnter={(e) => props.handleMouseEnter(e, props.data)}
-        onMouseLeave={props.handleMouseLeave}
+        onMouseOver={(e) => props.handleMouseEnter(e, props.data)}
+        onMouseOut={props.handleMouseLeave}
         cx={props.projection(coordinates)[0]}
         cy={props.projection(coordinates)[1]}
         style={props.styles} />
