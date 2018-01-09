@@ -1,27 +1,51 @@
 import React from 'react';
 import { geoPath } from 'd3-geo';
 import Marker from '../Marker';
+import Tooltip from '../../components/Tooltip';
 
-export default function Map(props) {
-  const pathGenerator = geoPath().projection(props.projection);
-  const countries = props.topoJSONFeatures.map((feature, index) => {
-    return (<path
-      key={`path${index}`}
-      d={pathGenerator(feature)}
-      className='country'
-      style={props.countryStyles}
-      fill={`rgba(38,50,56,${(1 / 6)})`}
-    />)
-  });
-  const markers = props.markerData &&
-    props.markerData.map(data => {
-      return (
-        <Marker
-          data={data}
-          projection={props.projection}
-          styles={props.markerStyles} />
-      );
+export default class Map extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showTooltip: false,
+      tooltipData: {}
+    };
+
+    this.handleMarkerMouseEnter = this.handleMarkerMouseEnter.bind(this);
+    this.handleMarkerMouseLeave = this.handleMarkerMouseLeave.bind(this);
+  }
+
+  handleMarkerMouseEnter(event, data) {
+    this.setState({ showTooltip: true, tooltipData: data });
+  }
+
+  handleMarkerMouseLeave(event) {
+    this.setState({ showTooltip: false });
+  }
+
+  render() {
+    const pathGenerator = geoPath().projection(this.props.projection);
+    const countries = this.props.topoJSONFeatures.map((feature, index) => {
+      return (<path
+        key={`path${index}`}
+        d={pathGenerator(feature)}
+        className='country'
+        style={this.props.countryStyles}
+        fill={`rgba(38,50,56,${(1 / 6)})`}
+      />)
     });
+    const markers = this.props.markerData &&
+      this.props.markerData.map(data => {
+        return (
+          <Marker
+            data={data}
+            projection={this.props.projection}
+            styles={this.props.markerStyles}
+            handleMouseEnter={this.handleMarkerMouseEnter}
+            handleMouseLeave={this.handleMarkerMouseLeave} />
+        );
+      });
     const containerStyles = {
       width: '100%',
       height: 'auto'
@@ -30,13 +54,16 @@ export default function Map(props) {
       display: 'block'
     };
 
-  return (
-    // <svg viewBox="0 0 500 500">
-    <div style={containerStyles}>
-      <svg viewBox={`0 0 ${props.width} ${props.height}`} style={svgStyle}>
-        {countries}
-        {props.markerData && markers}
-      </svg>
-    </div>
-  );
+    return (
+      <div style={containerStyles}>
+        <Tooltip
+          estateName={this.state.tooltipData.estateName}
+          opacity={this.state.showTooltip ? 1 : 0} />
+        <svg viewBox={`0 0 ${this.props.width} ${this.props.height}`} style={svgStyle}>
+          {countries}
+          {this.props.markerData && markers}
+        </svg>
+      </div>
+    );
+  }
 }
