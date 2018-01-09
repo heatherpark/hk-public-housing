@@ -44,8 +44,6 @@ export default class Map extends React.Component {
           key={`path${index}`}
           d={pathGenerator(feature)}
           className='country'
-          // style={this.props.countryStyles}
-          // fill='#D3D3D3'
         />
       );
     });
@@ -62,23 +60,13 @@ export default class Map extends React.Component {
         );
       });
 
-    const containerStyles = {
-      width: '100%',
-      height: 'auto'
-    };
-
-    const svgStyle = {
-      display: 'block'
-    };
-
     return (
-      <div style={containerStyles}>
+      <div className="map">
         <Tooltip
           data={this.state.tooltipData}
           position={this.state.hoverPosition}
           opacity={this.state.showTooltip ? 1 : 0} />
-        <svg viewBox={`0 0 ${this.props.width} ${this.props.height}`}
-          style={svgStyle}>
+        <svg viewBox={`0 0 ${this.props.width} ${this.props.height}`}>
           {countries}
           {this.props.markerData && markers}
         </svg>
