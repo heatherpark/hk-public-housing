@@ -57,7 +57,7 @@ export default class Map extends React.Component {
     return (
       <div style={containerStyles}>
         <Tooltip
-          estateName={this.state.tooltipData.estateName}
+          data={this.state.tooltipData}
           opacity={this.state.showTooltip ? 1 : 0} />
         <svg viewBox={`0 0 ${this.props.width} ${this.props.height}`} style={svgStyle}>
           {countries}
