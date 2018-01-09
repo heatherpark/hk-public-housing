@@ -5,22 +5,20 @@
 */
 
 import React from 'react';
+import './Tooltip.css';
 
 function Tooltip(props) {
-  const styles = {
-    opacity: props.opacity,
-    display: 'inline-block',
-    position: 'absolute',
+  const { data } = props;
+  const dynamicStyles = {
     top: props.position[1],
     left: props.position[0],
-    fontFamily: 'Anonymous Pro',
-    backgroundColor: '#FFF',
-    fontSize: '10px'
+    opacity: props.opacity
   };
-  const { data } = props;
 
   return (
-    <div style={styles}>
+    <div
+      className="tooltip"
+      style={dynamicStyles}>
       Estate: {data.estateName} <br />
       District: {data.districtName} <br />
       Intake Year: {data.intakeYear} <br />

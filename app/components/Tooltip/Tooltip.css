@@ -1,0 +1,7 @@
+.tooltip {
+  background-color: #FFF;
+  display: inline-block;
+  font-family: "Anonymous Pro", monospace;
+  font-size: 10px;
+  position: absolute;
+}
