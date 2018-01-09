@@ -21,13 +21,6 @@ const projection = geoMercator()
 
 const topoJSONFeatures = feature(topoJSON, topoJSON.objects['hong-kong']).features;
 
-const markerStyles = {
-  fill: '#800000',
-  stroke: '#FFF',
-  r: 10,
-  opacity: .5
-};
-
 export default function MapContainer() {
   return (
     <div>
@@ -37,7 +30,7 @@ export default function MapContainer() {
         projection={projection} 
         topoJSONFeatures={topoJSONFeatures}
         markerData={markerData}
-        markerStyles={markerStyles} />
+        markerRadius={8} />
     </div>
   );
 }

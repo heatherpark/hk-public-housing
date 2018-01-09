@@ -54,7 +54,7 @@ export default class Map extends React.Component {
           <Marker
             data={data}
             projection={this.props.projection}
-            styles={this.props.markerStyles}
+            radius={this.props.markerRadius}
             handleMouseOver={this.handleMarkerMouseOver}
             handleMouseOut={this.handleMarkerMouseOut} />
         );
