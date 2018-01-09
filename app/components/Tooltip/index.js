@@ -8,7 +8,11 @@ import React from 'react';
 
 function Tooltip(props) {
   const styles = {
-    opacity: props.opacity
+    opacity: props.opacity,
+    display: 'inline-block',
+    position: 'absolute',
+    top: props.position[1],
+    left: props.position[0]
   };
   const { data } = props;
 

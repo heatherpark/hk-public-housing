@@ -9,7 +9,8 @@ export default class Map extends React.Component {
 
     this.state = {
       showTooltip: false,
-      tooltipData: {}
+      tooltipData: {},
+      hoverPosition: []
     };
 
     this.handleMarkerMouseEnter = this.handleMarkerMouseEnter.bind(this);
@@ -17,11 +18,15 @@ export default class Map extends React.Component {
   }
 
   handleMarkerMouseEnter(event, data) {
-    this.setState({ showTooltip: true, tooltipData: data });
+    this.setState({ 
+      showTooltip: true,
+      tooltipData: data,
+      hoverPosition: [event.clientX, event.clientY]
+    });
   }
 
   handleMarkerMouseLeave(event) {
-    this.setState({ showTooltip: false });
+    // this.setState({ showTooltip: false });
   }
 
   render() {
@@ -58,6 +63,7 @@ export default class Map extends React.Component {
       <div style={containerStyles}>
         <Tooltip
           data={this.state.tooltipData}
+          position={this.state.hoverPosition}
           opacity={this.state.showTooltip ? 1 : 0} />
         <svg viewBox={`0 0 ${this.props.width} ${this.props.height}`} style={svgStyle}>
           {countries}
