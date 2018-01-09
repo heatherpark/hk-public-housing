@@ -7,18 +7,15 @@
 import React from 'react';
 
 function Marker(props) {
-  const { longitude, latitude } = props.data;
-  const coordinates = [longitude, latitude];
+  const coordinates = [props.data.longitude, props.data.latitude];
 
   return (
-    <svg>
-      <circle
-        onMouseOver={(e) => props.handleMouseEnter(e, props.data)}
-        onMouseOut={props.handleMouseLeave}
-        cx={props.projection(coordinates)[0]}
-        cy={props.projection(coordinates)[1]}
-        style={props.styles} />
-    </svg>
+    <circle
+      onMouseOver={(e) => props.handleMouseOver(e, props.data)}
+      onMouseOut={(e) => props.handleMouseOut(e)}
+      cx={props.projection(coordinates)[0]}
+      cy={props.projection(coordinates)[1]}
+      style={props.styles} />
   );
 }
 
