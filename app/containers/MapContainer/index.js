@@ -11,25 +11,24 @@ import Map from '../Map';
 import topoJSON from '../../data/hong-kong.topo';
 import markerData from '../../data/public-housing-marker-data';
 
-export default function MapContainer() {
-  const mapWidth = window.innerWidth;
-  const mapHeight = window.innerHeight;
-  const projection = geoMercator()
-    .center([114.1095, 22.3964])
-    .scale(100000)
-    .translate([mapWidth / 2, mapHeight / 2]);
-  const topoJSONFeatures = feature(topoJSON, topoJSON.objects['hong-kong']).features;
-  const countryStyles = {
-    stroke: '#FFF',
-    strokeWidth: 0.5
-  };
-  const markerStyles = {
-    fill: '#800000',
-    stroke: '#FFF',
-    r: 10,
-    opacity: .5
-  };
+const mapWidth = 600;
+const mapHeight = 480;
 
+const projection = geoMercator()
+  .center([114.1095, 22.3964])
+  .scale(50000)
+  .translate([mapWidth / 2, mapHeight / 3]);
+
+const topoJSONFeatures = feature(topoJSON, topoJSON.objects['hong-kong']).features;
+
+const markerStyles = {
+  fill: '#800000',
+  stroke: '#FFF',
+  r: 10,
+  opacity: .5
+};
+
+export default function MapContainer() {
   return (
     <div>
       <Map
@@ -37,7 +36,6 @@ export default function MapContainer() {
         height={mapHeight}
         projection={projection} 
         topoJSONFeatures={topoJSONFeatures}
-        countryStyles={countryStyles}
         markerData={markerData}
         markerStyles={markerStyles} />
     </div>

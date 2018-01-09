@@ -1,5 +1,6 @@
 import React from 'react';
 import { geoPath } from 'd3-geo';
+import './Map.css';
 import Marker from '../Marker';
 import Tooltip from '../../components/Tooltip';
 
@@ -13,11 +14,11 @@ export default class Map extends React.Component {
       hoverPosition: []
     };
 
-    this.handleMarkerMouseEnter = this.handleMarkerMouseEnter.bind(this);
-    this.handleMarkerMouseLeave = this.handleMarkerMouseLeave.bind(this);
+    this.handleMarkerMouseOver = this.handleMarkerMouseOver.bind(this);
+    this.handleMarkerMouseOut = this.handleMarkerMouseOut.bind(this);
   }
 
-  handleMarkerMouseEnter(event, data) {
+  handleMarkerMouseOver(event, data) {
     event.persist();
 
     setTimeout(() => {
@@ -29,23 +30,26 @@ export default class Map extends React.Component {
     }, 300);
   }
 
-  handleMarkerMouseLeave(event) {
-    setTimeout(() => {
-      this.setState({ showTooltip: false });
-    }, 300);
+  handleMarkerMouseOut(event) {
+    this.setState({ showTooltip: false });
   }
 
   render() {
-    const pathGenerator = geoPath().projection(this.props.projection);
+    const pathGenerator = geoPath()
+      .projection(this.props.projection);
+
     const countries = this.props.topoJSONFeatures.map((feature, index) => {
-      return (<path
-        key={`path${index}`}
-        d={pathGenerator(feature)}
-        className='country'
-        style={this.props.countryStyles}
-        fill={`rgba(38,50,56,${(1 / 6)})`}
-      />)
+      return (
+        <path
+          key={`path${index}`}
+          d={pathGenerator(feature)}
+          className='country'
+          // style={this.props.countryStyles}
+          // fill='#D3D3D3'
+        />
+      );
     });
+
     const markers = this.props.markerData &&
       this.props.markerData.map(data => {
         return (
@@ -53,14 +57,16 @@ export default class Map extends React.Component {
             data={data}
             projection={this.props.projection}
             styles={this.props.markerStyles}
-            handleMouseEnter={this.handleMarkerMouseEnter}
-            handleMouseLeave={this.handleMarkerMouseLeave} />
+            handleMouseOver={this.handleMarkerMouseOver}
+            handleMouseOut={this.handleMarkerMouseOut} />
         );
       });
+
     const containerStyles = {
       width: '100%',
       height: 'auto'
     };
+
     const svgStyle = {
       display: 'block'
     };
@@ -71,7 +77,8 @@ export default class Map extends React.Component {
           data={this.state.tooltipData}
           position={this.state.hoverPosition}
           opacity={this.state.showTooltip ? 1 : 0} />
-        <svg viewBox={`0 0 ${this.props.width} ${this.props.height}`} style={svgStyle}>
+        <svg viewBox={`0 0 ${this.props.width} ${this.props.height}`}
+          style={svgStyle}>
           {countries}
           {this.props.markerData && markers}
         </svg>
