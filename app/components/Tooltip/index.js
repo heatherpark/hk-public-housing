@@ -1,13 +1,7 @@
-/**
-*
-* Tooltip
-*
-*/
-
 import React from 'react';
 import './Tooltip.css';
 
-function Tooltip(props) {
+export default function Tooltip(props) {
   const { data } = props;
   const dynamicStyles = {
     top: props.position[1],
@@ -16,8 +10,7 @@ function Tooltip(props) {
   };
 
   return (
-    <div
-      className="tooltip"
+    <div className="tooltip"
       style={dynamicStyles}>
       Estate: {data.estateName} <br />
       District: {data.districtName} <br />
@@ -25,5 +18,3 @@ function Tooltip(props) {
     </div>
   );
 }
-
-export default Tooltip;
