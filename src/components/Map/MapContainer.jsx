@@ -56,7 +56,7 @@ export default class MapContainer extends React.Component {
     const topoJSONFeatures = feature(topoJSON, topoJSON.objects[geoJSONObjectKey]).features;
 
     const markers = markerData &&
-      markerData.map(data => {
+      markerData.map((data, index) => {
         return (
           <MarkerContainer
             data={{
@@ -66,6 +66,8 @@ export default class MapContainer extends React.Component {
                 data.latitude
               ]
             }}
+            // TODO: Replace index as keys with other value
+            key={index}
             projection={projection}
             handleMouseOver={this.handleMarkerMouseOver}
             handleMouseOut={this.handleMarkerMouseOut} />
