@@ -9,7 +9,7 @@ import topoJSON from '../../data/hong-kong.topo';
 import TooltipContainer from '../Tooltip/TooltipContainer';
 
 import MarkerContainer from '../Marker/MarkerContainer';
-import markerData from '../../data/public-housing-marker-data';
+import { markerData } from '../../data/public-housing-marker-data';
 
 export default class MapContainer extends React.Component {
   constructor(props) {
@@ -49,7 +49,7 @@ export default class MapContainer extends React.Component {
 
     const projection = geoMercator()  // projection type
       .center([114.1095, 22.3964])  // set center of projection to Hong Kong coordinates
-      .scale(30000)
+      .scale(35000)
       .translate([mapWidth / 2, mapHeight / 3]);
 
     const geoJSONObjectKey = 'hong-kong';
@@ -67,7 +67,6 @@ export default class MapContainer extends React.Component {
               ]
             }}
             projection={projection}
-            radius={9}
             handleMouseOver={this.handleMarkerMouseOver}
             handleMouseOut={this.handleMarkerMouseOut} />
         );
