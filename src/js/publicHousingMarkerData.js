@@ -17,7 +17,9 @@ export default function publicHousingMarkerData(data, estateKeys) {
       let value = estate[key];  // current value of key iteration
       let newKey = estateKeys[key]; // JS-friendly key
 
-      if (newKey) {
+      if (key === 'No. of Rental Flats') {
+        estateInfo[newKey] = getRentalQuantityNumber(value['zh-Hant']);
+      } else if (newKey) {
         if (typeof value !== 'object') {
           estateInfo[newKey] = value;
         } else {
@@ -28,4 +30,21 @@ export default function publicHousingMarkerData(data, estateKeys) {
 
     return estateInfo;
   });
+}
+
+function getRentalQuantityNumber(string) {
+  const stringSections = string.split(' ');
+  let number = '';
+
+  stringSections.forEach(section => {
+    // eslint-disable-next-line
+    const convertedFirstChar = Number.parseInt(section[0]);
+
+    if (!Number.isNaN(convertedFirstChar)) {
+      number += section;
+    }
+  });
+
+  // eslint-disable-next-line
+  return Number.parseInt(number);
 }

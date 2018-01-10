@@ -10,5 +10,6 @@ export default {
   'The map latitude parameter in Google Map': 'latitude',
   'The map longitude parameter in Google Map': 'longitude',
   'Type of Estate': 'estateType',
-  'Year of Intake': 'intakeYear'    
+  'Year of Intake': 'intakeYear',
+  'No. of Rental Flats': 'rentalQuantity'    
 };
