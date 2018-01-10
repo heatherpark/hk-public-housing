@@ -2,5 +2,24 @@
   fill: #800000;
   stroke: #FFF;
   stroke-width: 0.2;
-  opacity: .5;
+  opacity: 0;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:0.5; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:0.5; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:0.5; } }
+
+.fade-in {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+  
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+  
+  -webkit-animation-duration:2s;
+  -moz-animation-duration:2s;
+  animation-duration:2s;
 }
