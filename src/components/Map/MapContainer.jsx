@@ -44,13 +44,13 @@ export default class MapContainer extends React.Component {
   }
 
   render() {
-    const mapWidth = 600;
-    const mapHeight = 480;
+    const mapWidth = 750;
+    const mapHeight = 600;
 
     const projection = geoMercator()  // projection type
       .center([114.1095, 22.3964])  // set center of projection to Hong Kong coordinates
-      .scale(35000)
-      .translate([mapWidth / 2, mapHeight / 3]);
+      .scale(65000)
+      .translate([mapWidth / 2, mapHeight / 2.5]);
 
     const geoJSONObjectKey = 'hong-kong';
     const topoJSONFeatures = feature(topoJSON, topoJSON.objects[geoJSONObjectKey]).features;

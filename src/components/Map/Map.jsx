@@ -17,9 +17,10 @@ export default function Map(props) {
         />
       );
   });
+  // viewBox={`0 0 ${props.width} ${props.height}`}
 
   return (
-    <svg viewBox={`0 0 ${props.width} ${props.height}`}>
+    <svg width={props.width} height={props.height}>
       {countries}
       {props.children}
     </svg>

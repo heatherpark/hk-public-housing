@@ -8,3 +8,8 @@
   stroke: #FFF;
   stroke-width: 0.5;
 }
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
