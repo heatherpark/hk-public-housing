@@ -5,12 +5,12 @@ import { totalRentalQuantity } from '../../data/public-housing-marker-data';
 
 export default function MarkerContainer(props) {
   const getRadius = (baseRadius, quantity, totalQuantity) => {
-    const ratio = (quantity / (totalQuantity * 14)) * 100;
+    const ratio = (quantity / (totalQuantity * 10)) * 100;
     return baseRadius * ratio;
   }
 
   const radius = getRadius(
-    100,
+    150,
     props.data.rentalQuantity,
     totalRentalQuantity
   );
