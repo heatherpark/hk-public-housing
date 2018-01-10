@@ -11,6 +11,8 @@ h6, p {
   font-size: 1em;
   padding: 1%;
   position: absolute;
+  transition-property: opacity;
+  transition-duration: 0.7s;
 }
 
 .estate-name {
