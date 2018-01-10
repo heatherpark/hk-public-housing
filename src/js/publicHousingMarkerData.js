@@ -34,17 +34,18 @@ export default function publicHousingMarkerData(data, estateKeys) {
 
 function getRentalQuantityNumber(string) {
   const stringSections = string.split(' ');
-  let number = '';
+  let numberString = '';
 
   stringSections.forEach(section => {
     // eslint-disable-next-line
     const convertedFirstChar = Number.parseInt(section[0]);
 
     if (!Number.isNaN(convertedFirstChar)) {
-      number += section;
+      numberString += section;
     }
   });
 
   // eslint-disable-next-line
-  return Number.parseInt(number);
+  const number = Number.parseInt(numberString);
+  return number ? number : 0;
 }
