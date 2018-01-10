@@ -6,9 +6,9 @@ import Map from '../Map';
 import '../Map/Map.css';
 import topoJSON from '../../data/hong-kong.topo';
 
-import Tooltip from '../../components/Tooltip';
+import TooltipContainer from '../../components/TooltipContainer';
 
-import Marker from '../Marker';
+import MarkerContainer from '../MarkerContainer';
 import markerData from '../../data/public-housing-marker-data';
 
 export default class MapContainer extends React.Component {
@@ -49,7 +49,7 @@ export default class MapContainer extends React.Component {
 
     const projection = geoMercator()  // projection type
       .center([114.1095, 22.3964])  // set center of projection to Hong Kong coordinates
-      .scale(50000)
+      .scale(30000)
       .translate([mapWidth / 2, mapHeight / 3]);
 
     const geoJSONObjectKey = 'hong-kong';
@@ -58,7 +58,7 @@ export default class MapContainer extends React.Component {
     const markers = markerData &&
       markerData.map(data => {
         return (
-          <Marker
+          <MarkerContainer
             data={{
               ...data,
               coordinates: [
@@ -75,7 +75,7 @@ export default class MapContainer extends React.Component {
 
     return (
       <div className="map">
-        <Tooltip  
+        <TooltipContainer  
           data={this.state.tooltipData}
           position={this.state.hoverPosition}
           opacity={this.state.showTooltip ? 1 : 0} />
