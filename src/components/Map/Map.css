@@ -1,0 +1,10 @@
+.map {
+  width: 100%;
+  height: auto;
+}
+
+.country {
+  fill: #D3D3D3;
+  stroke: #FFF;
+  stroke-width: 0.5;
+}
