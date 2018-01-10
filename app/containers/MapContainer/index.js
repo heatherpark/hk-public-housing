@@ -59,7 +59,13 @@ export default class MapContainer extends React.Component {
       markerData.map(data => {
         return (
           <Marker
-            data={data}
+            data={{
+              ...data,
+              coordinates: [
+                data.longitude,
+                data.latitude
+              ]
+            }}
             projection={projection}
             radius={9}
             handleMouseOver={this.handleMarkerMouseOver}

@@ -2,18 +2,13 @@ import React from 'react';
 import './Marker.css';
 
 export default function Marker(props) {
-  const coordinates = [
-    props.data.longitude, 
-    props.data.latitude
-  ];
-
   return (
     <circle
       className="marker"
       onMouseOver={(e) => props.handleMouseOver(e, props.data)}
       onMouseOut={(e) => props.handleMouseOut(e)}
-      cx={props.projection(coordinates)[0]}
-      cy={props.projection(coordinates)[1]}
+      cy={props.projection(props.data.coordinates)[1]}
+      cx={props.projection(props.data.coordinates)[0]}
       r={props.radius} />
   );
 }
