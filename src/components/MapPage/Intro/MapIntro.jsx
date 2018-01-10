@@ -8,7 +8,6 @@ export default function MapIntro() {
   return (
     <div className="map-intro">
       <MapHeading />
-      <AccentBar />
       <MapDescription />
     </div>
   );

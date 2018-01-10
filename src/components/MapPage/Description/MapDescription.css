@@ -1,6 +1,8 @@
 .map-description {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 0.8em;
+  font-size: 0.88em;
   font-weight: 400;
   color: #4A4A4A;
+  line-height: 1.5em;
+  margin-top: 4%;
 }
