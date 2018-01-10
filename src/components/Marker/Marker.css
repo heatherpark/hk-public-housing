@@ -1,5 +1,6 @@
 .marker {
   fill: #800000;
   stroke: #FFF;
+  stroke-width: 0.2;
   opacity: .5;
 }

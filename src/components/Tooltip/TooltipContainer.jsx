@@ -8,9 +8,10 @@ export default function TooltipContainer(props) {
     <Tooltip
       position={props.position}
       opacity={props.opacity}>
-      <p>Estate: {data.estateName}</p>
-      <p>District: {data.districtName}</p>
-      <p>Intake Year: {data.intakeYear}</p>
+      <h6 className="estate-name">{data.estateName}</h6>
+      <p className="details"><span className="label">District:</span> {data.districtName}</p>
+      <p className="details"><span className="label">Intake Year:</span> {data.intakeYear}</p>
+      <p className="details"><span className="label"># of Rental Units:</span> {data.rentalQuantity}</p>
     </Tooltip>
   );
 }
