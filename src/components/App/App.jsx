@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import MapIntro from '../MapPage/Intro/MapIntro';
-import MapContainer from '../Map/MapContainer';
+import MapPage from '../MapPage/Page/MapPage';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <MapIntro />
-        <MapContainer />
+        <MapPage />
       </div>
     );
   }

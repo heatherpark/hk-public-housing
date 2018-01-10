@@ -1,0 +1,13 @@
+.map-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.intro-container {
+  width: 30%;
+}
+
+.map-container {
+  width: 70%;
+}
