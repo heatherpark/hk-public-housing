@@ -6,9 +6,9 @@ import Map from './Map';
 import './Map.css';
 import topoJSON from '../../data/hong-kong.topo';
 
-import TooltipContainer from '../../components/TooltipContainer';
+import TooltipContainer from '../Tooltip/TooltipContainer';
 
-import MarkerContainer from '../MarkerContainer';
+import MarkerContainer from '../Marker/MarkerContainer';
 import markerData from '../../data/public-housing-marker-data';
 
 export default class MapContainer extends React.Component {
