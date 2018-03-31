@@ -1,19 +1,34 @@
 import React from 'react';
 import './EstateMarker.css';
 import Marker from '../../presentational/Marker/Marker';
-import { totalRentalQuantity } from '../../../data/public-housing-marker-data';
+// import { totalRentalQuantity } from '../../../data/public-housing-marker-data';
 
 export default function EstateMarker(props) {
-  const getRadius = (baseRadius, quantity, totalQuantity) => {
-    const ratio = (quantity / (totalQuantity * 10)) * 100;
-    return baseRadius * ratio;
-  }
+  const getInterval = (number, intervalSize, rangeMin, rangeMax) => {
+    let intervalCount = 1;
 
-  const radius = getRadius(
-    150,
-    props.data.rentalQuantity,
-    totalRentalQuantity
-  );
+    for (let i = rangeMin; i + intervalSize - 1 <= rangeMax; i += intervalSize) {
+      let intervalMin = i;
+      let intervalMax = i + intervalSize - 1;
+
+      if (isInRange(number, intervalMin, intervalMax)) {
+        return intervalCount;
+      }
+
+      intervalMin += intervalSize;
+      intervalCount++;
+    }
+  };
+
+  const isInRange = (number, min, max) => {
+    return number >= min && number <= max;
+  };
+
+  const radius = (value, baseRadius) => {
+    const ratio = getInterval(value, 1000, 1, 15000);
+    console.log(ratio);
+    return baseRadius + (4 * ratio);
+  }
 
   return (
     <svg
@@ -23,7 +38,7 @@ export default function EstateMarker(props) {
       <Marker
         projection={props.projection}
         data={props.data}
-        radius={radius} />
+        radius={8} />
     </svg>
   );
 }
