@@ -1,7 +1,7 @@
 import React from 'react';
-import './Marker.css';
-import Marker from './Marker';
-import { totalRentalQuantity } from '../../data/public-housing-marker-data';
+import './EstateMarker.css';
+import Marker from '../../presentational/Marker/Marker';
+import { totalRentalQuantity } from '../../../data/public-housing-marker-data';
 
 export default function MarkerContainer(props) {
   const getRadius = (baseRadius, quantity, totalQuantity) => {
@@ -17,6 +17,7 @@ export default function MarkerContainer(props) {
 
   return (
     <svg
+      className="estate-marker"
       onMouseOver={(e) => props.handleMouseOver(e, props.data)}
       onMouseOut={(e) => props.handleMouseOut(e)}>
       <Marker

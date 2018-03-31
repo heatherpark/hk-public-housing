@@ -8,7 +8,7 @@ import topoJSON from '../../data/hong-kong.topo';
 
 import TooltipContainer from '../Tooltip/TooltipContainer';
 
-import MarkerContainer from '../Marker/MarkerContainer';
+import EstateMarker from '../container/EstateMarker/EstateMarker';
 import { markerData } from '../../data/public-housing-marker-data';
 
 export default class MapContainer extends React.Component {
@@ -58,7 +58,7 @@ export default class MapContainer extends React.Component {
     const markers = markerData &&
       markerData.map((data, index) => {
         return (
-          <MarkerContainer
+          <EstateMarker
             data={{
               ...data,
               coordinates: [
