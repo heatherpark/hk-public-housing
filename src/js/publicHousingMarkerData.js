@@ -37,7 +37,6 @@ function getRentalQuantityNumber(string) {
   let numberString = '';
 
   stringSections.forEach(section => {
-    // eslint-disable-next-line
     const convertedFirstChar = Number.parseInt(section[0]);
 
     if (!Number.isNaN(convertedFirstChar)) {
@@ -45,7 +44,6 @@ function getRentalQuantityNumber(string) {
     }
   });
 
-  // eslint-disable-next-line
   const number = Number.parseInt(numberString);
   return number ? number : 0;
 }
