@@ -1,9 +1,10 @@
 import React from 'react';
-import Tooltip from './Tooltip';
+import Tooltip from '../../presentational/Tooltip/Tooltip';
+import './EstateTooltip.css';
 
-export default function TooltipContainer(props) {
+export default function EstateTooltip(props) {
   const { data } = props;
-
+  
   return (
     <Tooltip
       position={props.position}

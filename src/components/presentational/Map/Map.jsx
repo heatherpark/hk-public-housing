@@ -1,6 +1,5 @@
 import React from 'react';
 import { geoPath } from 'd3-geo';
-import './Map.css';
 
 export default function Map(props) {
   const pathGenerator = geoPath()

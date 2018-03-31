@@ -2,16 +2,16 @@ import React from 'react';
 import { feature } from 'topojson-client';
 import { geoMercator } from 'd3-geo';
 
-import Map from './Map';
-import './Map.css';
-import topoJSON from '../../data/hong-kong.topo';
+import Map from '../../presentational/Map/Map';
+import './HongKongMap.css';
+import topoJSON from '../../../data/hong-kong.topo';
 
-import TooltipContainer from '../Tooltip/TooltipContainer';
+import EstateTooltip from '../EstateTooltip/EstateTooltip';
 
-import MarkerContainer from '../Marker/MarkerContainer';
-import { markerData } from '../../data/public-housing-marker-data';
+import EstateMarker from '../EstateMarker/EstateMarker';
+import { markerData } from '../../../data/public-housing-marker-data';
 
-export default class MapContainer extends React.Component {
+export default class HongKongMap extends React.Component {
   constructor(props) {
     super(props);
 
@@ -58,7 +58,7 @@ export default class MapContainer extends React.Component {
     const markers = markerData &&
       markerData.map((data, index) => {
         return (
-          <MarkerContainer
+          <EstateMarker
             data={{
               ...data,
               coordinates: [
@@ -76,7 +76,7 @@ export default class MapContainer extends React.Component {
 
     return (
       <div className="map">
-        <TooltipContainer  
+        <EstateTooltip  
           data={this.state.tooltipData}
           position={this.state.hoverPosition}
           opacity={this.state.showTooltip ? 1 : 0} />
