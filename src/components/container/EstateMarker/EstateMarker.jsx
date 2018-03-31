@@ -3,7 +3,7 @@ import './EstateMarker.css';
 import Marker from '../../presentational/Marker/Marker';
 import { totalRentalQuantity } from '../../../data/public-housing-marker-data';
 
-export default function MarkerContainer(props) {
+export default function EstateMarker(props) {
   const getRadius = (baseRadius, quantity, totalQuantity) => {
     const ratio = (quantity / (totalQuantity * 10)) * 100;
     return baseRadius * ratio;
